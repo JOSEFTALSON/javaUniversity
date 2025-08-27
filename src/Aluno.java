@@ -1,24 +1,24 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Aluno {
     private String nome;
-    private List<Integer> notas;
+    private Map<String, Double> notas;
 
     public Aluno(String nome) {
         this.nome = nome;
-        this.notas = new ArrayList<>();
+        this.notas = new HashMap<>();
     }
 
-    public void adicionarNota(int nota) {
-        this.notas.add(nota);
+    public void adicionarNota(String materia, Double nota) {
+        this.notas.put(materia, nota);
     }
 
     public String getNome() {
         return nome;
     }
 
-    public List<Integer> getNotas() {
+    public Map<String, Double> getNotas() {
         return notas;
     }
 }

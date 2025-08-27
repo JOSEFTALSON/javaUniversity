@@ -1,17 +1,22 @@
+import java.util.*;
+
 public class Main {
     public static void main(String[] args) {
-        // Criar aluno com nome "Alice"
         Aluno aluno = new Aluno("Alice");
 
-        // Adicionar notas: Matemática, Física, Química
-        aluno.adicionarNota(85); // Matemática
-        aluno.adicionarNota(92); // Física
-        aluno.adicionarNota(78); // Química
+        // Adicionar notas com nome da matéria
+        aluno.adicionarNota("Matemática", 85.6);
+        aluno.adicionarNota("Física", 92.0);
+        aluno.adicionarNota("Química", 78.5);
 
-        // Exibir as notas
-        System.out.println("Notas de " + aluno.getNome() + ":");
-        System.out.println("Matemática: " + aluno.getNotas().get(0));
-        System.out.println("Física: " + aluno.getNotas().get(1));
-        System.out.println("Química: " + aluno.getNotas().get(2));
+        // Ordenar as matérias por nota decrescente
+        List<Map.Entry<String, Double>> listaNotas = new ArrayList<>(aluno.getNotas().entrySet());
+        listaNotas.sort(Map.Entry.<String, Double>comparingByValue().reversed());
+
+        // Exibir as notas ordenadas
+        System.out.println("Notas de " + aluno.getNome() + " em ordem decrescente:");
+        for (Map.Entry<String, Double> entrada : listaNotas) {
+            System.out.println(entrada.getKey() + ": " + entrada.getValue() + " pontos");
+        }
     }
 }
